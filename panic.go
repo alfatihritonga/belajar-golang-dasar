@@ -16,6 +16,14 @@ func runApplication(status bool, check Checklog) {
 }
 
 func endApplication() {
+	errorRecover := recover()
+
+	if errorRecover != nil {
+		fmt.Println(errorRecover)
+	} else {
+		fmt.Println("Application running smoothly.")
+	}
+
 	fmt.Println("Application stop running.")
 }
 
@@ -28,5 +36,5 @@ func loggingStatus(status bool) {
 }
 
 func main() {
-	runApplication(false, loggingStatus)
+	runApplication(true, loggingStatus)
 }
